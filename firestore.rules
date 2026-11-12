@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Клиентский доступ полностью запрещен.
+    // С базой работает исключительно защищенный серверный бэкенд на Node.js.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
